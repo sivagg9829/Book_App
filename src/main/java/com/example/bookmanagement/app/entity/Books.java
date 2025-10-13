@@ -1,21 +1,37 @@
 package com.example.bookmanagement.app.entity;
 
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class Books {
+@Builder
+@Entity
+@Table(name = "books")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Books implements Serializable {
 
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Column(name = "title")
     private String title;
 
+    @Column(name = "isbn")
     private String isbn;
 
+    @Column(name = "published_date")
     private Date publishedDate;
 
+    @Column(name = "price")
     private double price;
 
-    private Integer authorId;
+    @Column(name = "author_id")
+    private Long authorId;
 }

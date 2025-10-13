@@ -7,6 +7,8 @@ import java.util.Date;
 @Data
 public class AuthorRequest {
 
+    private Integer id;
+
     private String name;
 
     private String email;

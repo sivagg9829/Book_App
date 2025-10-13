@@ -2,19 +2,22 @@ package com.example.bookmanagement.app.service;
 
 import com.example.bookmanagement.app.entity.BookRequest;
 import com.example.bookmanagement.app.entity.BookResponse;
+import com.example.bookmanagement.app.entity.Books;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface BookService {
 
-    BookResponse createBook(BookRequest bookRequest);
+    Books createBook(BookRequest bookRequest);
 
-    BookResponse getAllBook();
+    List<Books> getAllBook();
 
-    BookResponse getBookById(String id);
+    Books getBookById(Integer id);
 
-    BookResponse updateBook(BookRequest bookRequest, String id);
+    Books updateBook(BookRequest bookRequest, Integer id);
 
-    BookResponse deleteBook(String id);
+    void deleteBook(Integer id);
 
 }

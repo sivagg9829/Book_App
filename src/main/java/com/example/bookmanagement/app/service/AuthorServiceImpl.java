@@ -2,12 +2,12 @@ package com.example.bookmanagement.app.service;
 
 import com.example.bookmanagement.app.entity.Author;
 import com.example.bookmanagement.app.entity.AuthorRequest;
-import com.example.bookmanagement.app.entity.AuthorResponse;
 import com.example.bookmanagement.app.exception.ResourceNotFoundException;
 import com.example.bookmanagement.app.repository.AuthorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +19,10 @@ public class AuthorServiceImpl implements AuthorService {
     private final AuthorRepository repository;
 
     @Override
+    @Transactional
     public Author createAuthor(AuthorRequest authorRequest) {
-        return repository.save(Author.builder().email(authorRequest.getEmail())
+        return repository.save(Author.builder()
+                .email(authorRequest.getEmail())
                 .birthDate(authorRequest.getBirthDate())
                 .name(authorRequest.getName()).build());
     }
@@ -45,7 +47,7 @@ public class AuthorServiceImpl implements AuthorService {
             author.setName(authorRequest.getName());
             author.setEmail(authorRequest.getEmail());
             author.setBirthDate(authorRequest.getBirthDate());
-            return author;
+            return repository.save(author);
         } else {
           throw new ResourceNotFoundException("Record not found with id : "+ id);
         }

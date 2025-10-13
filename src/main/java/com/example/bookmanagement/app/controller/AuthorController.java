@@ -20,7 +20,7 @@ public class AuthorController {
     public final AuthorService authorService;
 
     @PostMapping(path="/api/authors", produces = "application/json")
-    public ResponseEntity<Author> createAuthor(AuthorRequest authorRequest){
+    public ResponseEntity<Author> createAuthor(@RequestBody AuthorRequest authorRequest){
         return ResponseEntity.ok().body(authorService.createAuthor(authorRequest));
     }
 
@@ -30,17 +30,17 @@ public class AuthorController {
     }
 
     @GetMapping(path="/api/authors/{id}", produces = "application/json")
-    public ResponseEntity<Author> createAuthor(Integer id){
+    public ResponseEntity<Author> createAuthor(@PathVariable Integer id){
         return ResponseEntity.ok().body(authorService.getAuthorById(id));
     }
 
     @PutMapping(path="/api/authors/{id}", produces = "application/json")
-    public ResponseEntity<Author> updateAuthor(AuthorRequest authorRequest, Integer id){
+    public ResponseEntity<Author> updateAuthor(@RequestBody AuthorRequest authorRequest, @PathVariable Integer id){
         return ResponseEntity.ok().body(authorService.updateAuthor(authorRequest, id));
     }
 
-    @DeleteMapping(path="/api/authors", produces = "application/json")
-    public HttpStatus deleteAuthor(Integer id){
+    @DeleteMapping(path="/api/authors/{id}", produces = "application/json")
+    public HttpStatus deleteAuthor(@PathVariable Integer id){
         authorService.deleteAuthor(id);
         return HttpStatus.OK;
     }

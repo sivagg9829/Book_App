@@ -16,8 +16,8 @@ import java.util.Date;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -25,6 +25,6 @@ public class Author {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "birthdate")
+    @Column(name = "birth_date")
     private Date birthDate;
 }

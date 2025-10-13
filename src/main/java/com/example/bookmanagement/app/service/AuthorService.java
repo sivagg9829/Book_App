@@ -10,14 +10,14 @@ import java.util.List;
 @Service
 public interface AuthorService {
 
-    public Author createAuthor(AuthorRequest authorRequest);
+    Author createAuthor(AuthorRequest authorRequest);
 
-    public List<Author> getAllAuthors();
+    List<Author> getAllAuthors();
 
-    public Author getAuthorById(Integer id);
+    Author getAuthorById(Integer id);
 
-    public Author updateAuthor(AuthorRequest authorRequest, Integer id);
+    Author updateAuthor(AuthorRequest authorRequest, Integer id);
 
-    public void deleteAuthor(Integer id);
+    void deleteAuthor(Integer id);
 
 }

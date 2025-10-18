@@ -1,7 +1,6 @@
 package com.example.bookmanagement.app.controller;
 
 import com.example.bookmanagement.app.entity.BookRequest;
-import com.example.bookmanagement.app.entity.BookResponse;
 import com.example.bookmanagement.app.entity.Books;
 import com.example.bookmanagement.app.service.BookService;
 import lombok.RequiredArgsConstructor;
